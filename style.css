@@ -1,0 +1,206 @@
+.row_container {
+    display: flex;
+    justify-content: center;
+}
+
+:root, :host {
+    --width-container: 20rem;
+    --height-container: 20rem;
+    --width-dark-mode-container: 20%;
+    --height-dark-mode-container: 10%;
+    --height-content-container: 80%;
+    --height-input-container: 10%;
+    --font-size: 1.5rem;
+
+    --clr-light-back: white;
+    --clr-light-border: rgba(0,0,0,0.20);
+    --clr-light-font: #888;
+
+    --clr-dark-back: rgb(52, 51, 65);
+    --clr-dark-border: rgb(24, 23, 32);
+    --clr-dark-font: white;
+}
+
+weather-element {
+    display: flex;
+    width: var(--width-container);
+    height: var(--height-container);
+}
+
+.weather_element_container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 3px 4px 0 rgba(0,0,0,0.14), 0 3px 3px -2px rgba(0,0,0,0.12), 0 1px 8px 0 rgba(0,0,0,0.20);
+}
+.light.weather_element_container {
+    background: var(--clr-light-back);
+}
+.dark.weather_element_container {
+    background: var(--clr-dark-back);
+}
+
+.weather_element_dark_mode_container {
+    position: relative;
+    width: var(--width-dark-mode-container);
+    height: var(--height-dark-mode-container);
+}
+.weather_element_dark_mode_switch {
+    position: relative;
+    top: 0;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    border: solid 1px;
+    border-radius: 4rem;
+    display: flex;
+    justify-content: space-around;
+}
+.light .weather_element_dark_mode_switch {
+    border-color: var(--clr-light-border);
+}
+.dark .weather_element_dark_mode_switch {
+    border-color: var(--clr-dark-border);
+}
+
+.dark_mode, .light_mode {
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size);
+}
+.light .dark_mode, .light .light_mode, .light .weather_element_preloader {
+    color: var(--clr-light-font);
+}
+.dark .dark_mode, .dark .light_mode, .dark .weather_element_preloader {
+    color: var(--clr-dark-font);
+}
+
+.weather_element_dark_mode_button {
+    position: absolute;
+    top: 0%;
+    width: 50%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.light .weather_element_dark_mode_button {
+    left: 0%;
+    background: var(--clr-light-back);
+}
+
+.dark .weather_element_dark_mode_button {
+    left: 50%;
+    background: var(--clr-dark-back);
+}
+
+.weather_element_content {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    width: 100%;
+    height: var(--height-content-container);
+}
+.weather_element_weather, .weather_element_preloader, .weather_element_welcome, .weather_element_error {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.weather_element_preloader {
+    z-index: 50;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: flex;
+}
+.weather_element_welcome, .weather_element_error {
+    align-content: center;
+}
+.weather_element_weather p, .weather_element_welcome i, .weather_element_welcome span, .weather_element_error i, .weather_element_error span {
+    width: 100%;
+    font-size: 4rem;
+    text-align: center;
+    margin: 5%;
+}
+.weather_element_weather img {
+    width: 40%;
+
+}
+.weather_element_weather p, .weather_element_welcome span, .weather_element_error span {
+    font-size: var(--font-size);
+}
+.light .weather_element_weather img, .light .weather_element_weather p, .light .weather_element_welcome i, .light .weather_element_welcome span, .light .weather_element_error i, .light .weather_element_error span {
+    color: var(--clr-light-font);
+}
+.dark .weather_element_weather img, .dark .weather_element_weather p, .dark .weather_element_welcome i, .dark .weather_element_welcome span, .dark .weather_element_error i, .dark .weather_element_error span {
+    color: var(--clr-dark-font);
+}
+
+.weather_element_input {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.weather_element_input input {
+    text-align: center;
+    border-radius: 0.5rem;
+    font-size: var(--font-size);
+}
+.light .weather_element_input input {
+    color: var(--clr-light-font);
+    border-color: var(--clr-light-border);
+    background-color: var(--clr-light-back);
+}
+.dark .weather_element_input input {
+    color:var(--clr-dark-font);
+    border-color: var(--clr-dark-border);
+    background-color: var(--clr-dark-back);
+}
+
+@media screen and (max-width: 350px) {
+    .weather_element_dark_mode_container {
+        width: 4rem;
+        height: 2rem;
+    }
+}
+
+
+.lds-dual-ring {
+    display: inline-block;
+    width: 8rem;
+    height: 8rem;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 80%;
+    height: 80%;
+    margin: 2%;
+    border-radius: 50%;
+    border: 0.6rem solid;
+    animation: lds-dual-ring 1.8s linear infinite;
+  }
+  .light .lds-dual-ring:after {
+    border-color: var(--clr-light-font) transparent var(--clr-light-font) transparent;
+  }
+  .dark .lds-dual-ring:after {
+    border-color: var(--clr-dark-font) transparent var(--clr-dark-font) transparent;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }  
+  
